@@ -1,23 +1,23 @@
 import java.util.Scanner;
 
 public class Main {
-    // This function calculates C(n, k) — the number of combinations using recursion.
-    // Formula used: C(n, k) = C(n-1, k-1) + C(n-1, k)
-    // Base cases are C(n, 0) = 1 and C(n, n) = 1.
-    // It uses a simple recursive tree structure.
-    // Inefficient for large n due to overlapping subproblems.
-    // Can be optimized using memoization or dynamic programming.
-    // Time Complexity: O(2^n)
-    public static int combi(int n, int k) {
-        if (k == 0 || k == n) return 1;
-        return combi(n - 1, k - 1) + combi(n - 1, k);
+    // This function finds the greatest common divisor (GCD) of two numbers.
+    // It uses the Euclidean Algorithm, which recursively applies gcd(b, a % b).
+    // The recursion stops when b becomes 0, and then a is the GCD.
+    // This method is efficient even for large numbers.
+    // Demonstrates mathematical recursion and modulo operation.
+    // Frequently used in number theory and fraction simplification.
+    // Time Complexity: O(log(min(a, b)))
+    public static int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("--- Task 9: Binomial Coefficient ---");
-        int n = in.nextInt();
-        int k = in.nextInt();
-        System.out.printf("C(%d,%d) = %d\n", n, k, combi(n, k));
+        System.out.println("--- Task 10: GCD ---");
+        int a = in.nextInt();
+        int b = in.nextInt();
+        System.out.printf("GCD(%d,%d) = %d\n", a, b, gcd(a, b));
     }
 }
