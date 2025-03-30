@@ -1,23 +1,23 @@
 import java.util.Scanner;
 
 public class Main {
-    // This function checks if a given string contains only digits using recursion.
-    // It checks one character at a time, from left to right.
-    // If any character is not a digit, it immediately returns false.
-    // Recursion stops when the entire string is checked (base case).
-    // Demonstrates recursion on string processing.
-    // Works for any non-null string.
-    // Time Complexity: O(n)
-    public static boolean isAllDigits(String s, int index) {
-        if (index == s.length()) return true;
-        if (!Character.isDigit(s.charAt(index))) return false;
-        return isAllDigits(s, index + 1);
+    // This function calculates C(n, k) — the number of combinations using recursion.
+    // Formula used: C(n, k) = C(n-1, k-1) + C(n-1, k)
+    // Base cases are C(n, 0) = 1 and C(n, n) = 1.
+    // It uses a simple recursive tree structure.
+    // Inefficient for large n due to overlapping subproblems.
+    // Can be optimized using memoization or dynamic programming.
+    // Time Complexity: O(2^n)
+    public static int combi(int n, int k) {
+        if (k == 0 || k == n) return 1;
+        return combi(n - 1, k - 1) + combi(n - 1, k);
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("--- Task 8: Check Digits ---");
-        String s = in.next();
-        System.out.println(s + " is " + (isAllDigits(s, 0) ? "All digits" : "Contains non-digit"));
+        System.out.println("--- Task 9: Binomial Coefficient ---");
+        int n = in.nextInt();
+        int k = in.nextInt();
+        System.out.printf("C(%d,%d) = %d\n", n, k, combi(n, k));
     }
 }
